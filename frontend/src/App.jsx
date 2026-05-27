@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import OrderConfirmation from './pages/OrderConfirmation'
 import Admin from './pages/Admin'
+import OrderDetail from './pages/OrderDetail'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="cuenta" element={<Account />} />
         <Route path="confirmacion/:orderId" element={<OrderConfirmation />} />
         <Route path="admin" element={<Admin />} />
+        <Route path="cuenta/orden/:orderId" element={<OrderDetail />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<Register />} />

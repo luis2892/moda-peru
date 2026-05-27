@@ -77,7 +77,7 @@ export default function Account() {
               ) : (
                 <div className="space-y-3">
                   {MOCK_ORDERS.map((order) => (
-                    <div key={order.id} className="card p-5 flex items-center justify-between">
+                    <Link key={order.id} to={`/cuenta/orden/${order.id}`} className="card p-5 flex items-center justify-between hover:border-primary-200 hover:shadow-md transition-all block">
                       <div>
                         <p className="font-medium text-sm">{order.id}</p>
                         <p className="text-xs text-gray-400 mt-0.5">{order.fecha} · {order.items} {order.items === 1 ? 'producto' : 'productos'}</p>
@@ -87,7 +87,7 @@ export default function Account() {
                         <span className="font-bold text-sm">{formatPrice(order.total)}</span>
                         <ChevronRight size={16} className="text-gray-400" />
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}
