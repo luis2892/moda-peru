@@ -42,7 +42,7 @@ router.get('/', async (req, res, next) => {
     query += ` LIMIT ? OFFSET ?`
     params.push(Number(limit), offset)
 
-    const [products] = await pool.execute(query, params)
+    const [products] = await pool.query(query, params)
     res.json(products)
   } catch (err) {
     next(err)
