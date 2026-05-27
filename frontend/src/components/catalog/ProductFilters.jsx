@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { ChevronDown, SlidersHorizontal, X } from 'lucide-react'
-import { TALLAS, COLORES, CATEGORIAS, formatPrice } from '../../utils/helpers'
+import { TALLAS, COLORES, CATEGORIAS, MARCAS } from '../../utils/helpers'
 
 export default function ProductFilters({ filters, onChange }) {
-  const [open, setOpen] = useState({ categoria: true, talla: true, color: false, precio: false })
+  const [open, setOpen] = useState({ categoria: true, talla: true, color: false, precio: false, marca: false })
 
   const toggle = (key) => setOpen((p) => ({ ...p, [key]: !p[key] }))
 
@@ -111,6 +111,23 @@ export default function ProductFilters({ filters, onChange }) {
                 className="accent-primary-600"
               />
               <span className="text-sm text-gray-700">{range.label}</span>
+            </label>
+          ))}
+        </div>
+      </FilterSection>
+
+      {/* Marca */}
+      <FilterSection label="Marca" open={open.marca} onToggle={() => toggle('marca')}>
+        <div className="space-y-2">
+          {MARCAS.map((m) => (
+            <label key={m} className="flex items-center gap-2 cursor-pointer group">
+              <input
+                type="checkbox"
+                checked={(filters.marcas || []).includes(m)}
+                onChange={() => handleMulti('marcas', m)}
+                className="accent-primary-600 w-4 h-4 rounded"
+              />
+              <span className="text-sm text-gray-700 group-hover:text-gray-900">{m}</span>
             </label>
           ))}
         </div>

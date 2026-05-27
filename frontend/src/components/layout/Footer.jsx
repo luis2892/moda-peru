@@ -93,7 +93,7 @@ export default function Footer() {
 
         <div className="border-t border-dark-700 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between gap-2">
           <p className="text-xs text-gray-500">© {new Date().getFullYear()} ModaPerú. Todos los derechos reservados.</p>
-          <p className="text-xs text-gray-500">Hecho con ❤ en Lima, Perú</p>
+          <p className="text-xs text-gray-500">Hecho por TARUK. Lima, Perú</p>
         </div>
       </div>
     </footer>

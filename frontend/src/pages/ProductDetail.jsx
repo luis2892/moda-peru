@@ -4,6 +4,7 @@ import { Heart, ShoppingBag, Star, Truck, RefreshCw, Shield, ChevronRight, Minus
 import { motion } from 'framer-motion'
 import { formatPrice, TALLAS, COLORES } from '../utils/helpers'
 import useCartStore from '../store/cartStore'
+import ProductCard from '../components/catalog/ProductCard'
 import toast from 'react-hot-toast'
 
 const MOCK_PRODUCT = {
@@ -26,6 +27,13 @@ const MOCK_PRODUCT = {
   colores_disponibles: ['Negro', 'Rosado', 'Beige'],
   stock: 12,
 }
+
+const MOCK_PRODUCT_RELATED = [
+  { id: 5, nombre: 'Vestido Cóctel Negro', categoria: 'vestidos', precio: 220, precio_original: 220, rating: 4.6, es_nuevo: true, descuento: 0, imagen_principal: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500&q=80' },
+  { id: 9, nombre: 'Vestido Maxi Plisado', categoria: 'vestidos', precio: 259, precio_original: 259, rating: 4.3, es_nuevo: false, descuento: 0, imagen_principal: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500&q=80' },
+  { id: 3, nombre: 'Falda Midi Elegante', categoria: 'faldas', precio: 135, precio_original: 135, rating: 4.7, es_nuevo: true, descuento: 0, imagen_principal: 'https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=500&q=80' },
+  { id: 6, nombre: 'Conjunto Casual Beige', categoria: 'blusas', precio: 159, precio_original: 200, rating: 4.4, es_nuevo: false, descuento: 20, imagen_principal: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=500&q=80' },
+]
 
 const MOCK_REVIEWS = [
   { id: 1, usuario: 'María G.', rating: 5, fecha: '2025-03-10', texto: 'Hermoso vestido, la tela es suave y el talle es perfecto. Lo recomiendo mucho.' },
@@ -67,14 +75,14 @@ export default function ProductDetail() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Gallery */}
         <div className="space-y-3">
-          <div className="relative overflow-hidden rounded-2xl bg-gray-100 aspect-[4/5]">
+          <div className="relative overflow-hidden rounded-2xl bg-gray-100 aspect-[4/5] group cursor-zoom-in">
             <motion.img
               key={selectedImage}
               src={product.imagenes[selectedImage]}
               alt={product.nombre}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-125"
             />
             {product.es_nuevo && (
               <span className="absolute top-4 left-4 badge bg-primary-600 text-white">Nuevo</span>
@@ -214,6 +222,16 @@ export default function ProductDetail() {
           </div>
         </div>
       </div>
+
+      {/* Productos relacionados */}
+      <section className="mt-16">
+        <h2 className="font-serif text-2xl font-bold text-gray-900 mb-6">También te puede gustar</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          {MOCK_PRODUCT_RELATED.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </section>
 
       {/* Reviews */}
       <section className="mt-20">

@@ -9,6 +9,7 @@ import Account from './pages/Account'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import OrderConfirmation from './pages/OrderConfirmation'
+import Admin from './pages/Admin'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="checkout" element={<Checkout />} />
         <Route path="cuenta" element={<Account />} />
         <Route path="confirmacion/:orderId" element={<OrderConfirmation />} />
+        <Route path="admin" element={<Admin />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<Register />} />

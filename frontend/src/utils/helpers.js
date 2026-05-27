@@ -26,6 +26,8 @@ export const COLORES = [
   { name: 'Gris', hex: '#6B7280' },
 ]
 
+export const MARCAS = ['Inti Studio', 'Qori Fashion', 'Misti Style', 'Lima Couture', 'Andina Co.', 'Pachacamac']
+
 export const CATEGORIAS = [
   { slug: 'vestidos', label: 'Vestidos', icon: '👗' },
   { slug: 'blusas', label: 'Blusas', icon: '👚' },

@@ -7,7 +7,8 @@ export default function Cart() {
   const { items, removeItem, updateQuantity, clearCart } = useCartStore()
   const subtotal = items.reduce((sum, i) => sum + i.precio * i.quantity, 0)
   const shipping = subtotal >= 150 ? 0 : 15
-  const total = subtotal + shipping
+  const igv = subtotal * 0.18
+  const total = subtotal + shipping + igv
 
   if (items.length === 0) {
     return (
@@ -92,6 +93,10 @@ export default function Cart() {
                   Agrega {formatPrice(150 - subtotal)} más para envío gratis
                 </p>
               )}
+              <div className="flex justify-between text-gray-600">
+                <span>IGV (18%)</span>
+                <span>{formatPrice(igv)}</span>
+              </div>
               <div className="border-t border-gray-100 pt-3 flex justify-between font-bold text-base">
                 <span>Total</span>
                 <span>{formatPrice(total)}</span>

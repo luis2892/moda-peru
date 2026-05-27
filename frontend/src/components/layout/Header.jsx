@@ -59,6 +59,11 @@ export default function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
+            {user?.rol === 'admin' && (
+              <NavLink to="/admin" className="hidden md:block text-xs font-semibold bg-primary-600 text-white px-3 py-1.5 rounded-full hover:bg-primary-700 transition-colors">
+                Admin
+              </NavLink>
+            )}
             {searchOpen ? (
               <form onSubmit={handleSearch} className="flex items-center gap-2">
                 <input

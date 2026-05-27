@@ -21,7 +21,8 @@ export default function Checkout() {
 
   const subtotal = items.reduce((sum, i) => sum + i.precio * i.quantity, 0)
   const shipping = subtotal >= 150 ? 0 : 15
-  const total = subtotal + shipping
+  const igv = subtotal * 0.18
+  const total = subtotal + shipping + igv
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
@@ -196,6 +197,9 @@ export default function Checkout() {
             <div className="flex justify-between text-gray-600">
               <span>Envío</span>
               <span className={shipping === 0 ? 'text-green-600' : ''}>{shipping === 0 ? 'Gratis' : formatPrice(shipping)}</span>
+            </div>
+            <div className="flex justify-between text-gray-600">
+              <span>IGV (18%)</span><span>{formatPrice(igv)}</span>
             </div>
             <div className="flex justify-between font-bold text-base pt-2 border-t border-gray-100">
               <span>Total</span><span>{formatPrice(total)}</span>
