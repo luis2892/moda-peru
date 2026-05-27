@@ -86,7 +86,7 @@ export default function ProductCard({ product }) {
             {product.rating > 0 && (
               <div className="flex items-center gap-1 text-xs text-gray-500">
                 <Star size={12} className="fill-yellow-400 text-yellow-400" />
-                {product.rating.toFixed(1)}
+                {parseFloat(product.rating).toFixed(1)}
               </div>
             )}
           </div>
